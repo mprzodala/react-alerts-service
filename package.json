@@ -4,18 +4,25 @@
   "main": "lib/index.js",
   "jsnext:main": "src/index.js",
   "description": "React Alerts Service",
-  "repository": "https://github.com/mprzodala/react-components-controller",
-  "homepage": "https://github.com/mprzodala/react-components-controller",
+  "repository": "https://github.com/mprzodala/react-alerts-service",
+  "homepage": "https://github.com/mprzodala/react-alerts-service",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mprzodala/react-components-controller/issues"
+    "url": "https://github.com/mprzodala/react-alerts-service/issues"
   },
   "keywords": [
-    "react-component",
-    "component-manage",
-    "manage",
-    "controller",
-    "react-controller"
+    "react",
+    "alerts",
+    "alerts-ui",
+    "react-alerts",
+    "alerts-service",
+    "alerts-manage",
+    "system-messages",
+    "react-success-message",
+    "messages",
+    "notification",
+    "browser-alerts",
+    "localstorage"
   ],
   "authors": [
     "Mariusz Przodała"
