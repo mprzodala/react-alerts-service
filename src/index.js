@@ -1,4 +1,5 @@
-export {actions} from './actions';
+export {Actions} from './actions';
+export {default as actions} from './actions';
 export {SuccessMessage} from './components/successMessage';
 export {WarningMessage} from './components/warningMessage';
 export {ErrorMessage} from './components/errorMessage';

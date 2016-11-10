@@ -1,5 +1,5 @@
 import React from 'react';
-import {actions} from '../actions';
+import {Actions} from '../actions';
 import {ErrorMessage} from './errorMessage';
 import {WarningMessage} from './warningMessage';
 import {InfoMessage} from './infoMessage';
@@ -9,6 +9,7 @@ import {findIndex} from 'lodash';
 export class MessagesHandler extends React.Component {
     constructor (props) {
         super(props);
+        this.actions = new Actions(props.storageType);
         this.state = {
             errorMessages: [],
             warningMessages: [],
@@ -19,7 +20,7 @@ export class MessagesHandler extends React.Component {
     }
 
     componentWillMount () {
-        const originalSetItem = window.localStorage.setItem;
+        const originalSetAlerts = this.actions.storage.setItem;
         const self = this;
         const onSetItemEvent = function(itemName) {
             if(itemName !== 'react-alerts') {
@@ -30,11 +31,11 @@ export class MessagesHandler extends React.Component {
                 warningMessages = [],
                 infoMessages = [],
                 successMessages = []
-            } = actions.getAlerts() || {};
+            } = self.actions.getAlerts() || {};
             self.setState({errorMessages,warningMessages,infoMessages,successMessages});
         };
-        window.localStorage.setItem = function () {
-            originalSetItem.apply(this, arguments);
+        this.actions.storage.setItem = function () {
+            originalSetAlerts.apply(this, arguments);
             onSetItemEvent.apply(this, arguments);
         };
         onSetItemEvent('react-alerts');
@@ -50,7 +51,7 @@ export class MessagesHandler extends React.Component {
             let messages = this.state[type];
             messages.splice(index, 1);
             this.setState({[type]: messages});
-            actions.setAlerts(this.state);
+            this.actions.setAlerts(this.state);
         }
     }
 
