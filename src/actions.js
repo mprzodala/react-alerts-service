@@ -1,4 +1,5 @@
 import SimpleStorage from './simpleStorage';
+import {findIndex} from 'lodash';
 
 export class Actions {
     constructor(storageType = 'simpleStorage'){
@@ -26,7 +27,18 @@ export class Actions {
     }
     setMessage(messageContent, type, messageIcon){
         const alerts = this.getAlerts();
-        alerts[type].push({id: this.generateMessageId() ,messageContent, messageIcon, timeCreated: new Date()});
+        const index = findIndex(alerts[type], m => m.messageContent.indexOf(messageContent) > -1);
+        if(index > -1){
+            alerts[type][index].repeated ++;
+        }else {
+            alerts[type].push({
+                id: this.generateMessageId(),
+                messageContent,
+                messageIcon,
+                timeCreated: new Date(),
+                repeated: 0
+            });
+        }
         this.setAlerts(alerts);
     }
     setErrorMessage(message, icon){

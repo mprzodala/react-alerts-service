@@ -62,14 +62,15 @@ export class MessagesHandler extends React.Component {
             warningMessageProps = {},
             infoMessageProps = {},
             successMessageProps = {},
-            closeTime = 5000
+            closeTime = 5000,
+            animation
         } = this.props;
         return (
             <div className={wrapperClassName}>
-                {this.state.errorMessages.map((item, key) => <ErrorMessage closeTime={closeTime} {...errorMessageProps} {...item} key={'error' + key} onClose={this.onClose} />)}
-                {this.state.warningMessages.map((item, key) => <WarningMessage closeTime={closeTime} {...warningMessageProps} {...item} key={'warning' + key} onClose={this.onClose} />)}
-                {this.state.infoMessages.map((item, key) => <InfoMessage closeTime={closeTime} {...infoMessageProps} {...item} key={'info' + key} onClose={this.onClose} />)}
-                {this.state.successMessages.map((item, key) => <SuccessMessage closeTime={closeTime} {...successMessageProps} {...item} key={'success' + key} onClose={this.onClose} />)}
+                {this.state.errorMessages.map((item, key) => <ErrorMessage closeTime={closeTime} animation={animation} {...errorMessageProps} {...item} key={'error' + key} onClose={this.onClose} />)}
+                {this.state.warningMessages.map((item, key) => <WarningMessage closeTime={closeTime} animation={animation} {...warningMessageProps} {...item} key={'warning' + key} onClose={this.onClose} />)}
+                {this.state.infoMessages.map((item, key) => <InfoMessage closeTime={closeTime} animation={animation} {...infoMessageProps} {...item} key={'info' + key} onClose={this.onClose} />)}
+                {this.state.successMessages.map((item, key) => <SuccessMessage closeTime={closeTime} animation={animation} {...successMessageProps} {...item} key={'success' + key} onClose={this.onClose} />)}
             </div>
         );
     }
