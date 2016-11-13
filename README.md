@@ -50,13 +50,20 @@ infoProps = {
 />
 ```
 
-also You can use ready semanticUI theme
+also You can use ready semanticUI or Bootstrap theme
 
 ```js
 import {MessagesHandlerSemantic} from 'react-alerts-service';
 
 <MessagesHandlerSemantic />
 ```
+
+```js
+import {MessagesHandlerBootstrap} from 'react-alerts-service';
+
+<MessagesHandlerBootstrap />
+```
+
 
 ####Actions
 ```js
