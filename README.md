@@ -1,4 +1,10 @@
-##React alerts service
+##React alerts service (ES6)
+
+####Installation
+
+```js
+npm i react-alerts-service --save
+```
 
 ####MessagesHandler
 
@@ -102,4 +108,16 @@ export const infoButton = () => (
 export const successButton = () => (
     <a onClick={() => actions.setSuccessMessage('Some error message text')}>Success alert button</a>
 );
+```
+
+####Storage
+
+You can use localStorage or simpleStorage, simpleStorage is default if You want use localStorage You must set it on Actions and messages handler
+
+```js
+import {Actions} from 'react-alerts-service';
+const actions = new Actions('localStorage');
+
+<MessagesHandlerBootstrap storageType={'localStorage'} />
+
 ```
