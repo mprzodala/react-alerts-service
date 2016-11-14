@@ -1,6 +1,6 @@
 {
   "name": "react-alerts-service",
-  "version": "0.6.1",
+  "version": "0.8.0",
   "main": "lib/index.js",
   "jsnext:main": "src/index.js",
   "description": "React Alerts Service",

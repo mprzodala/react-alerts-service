@@ -3,7 +3,7 @@ import {Actions} from '../actions';
 import {BasicMessage} from './basicMessage';
 import {findIndex} from 'lodash';
 
-export class MessagesHandler extends React.Component {
+class MessagesHandler extends React.Component {
     constructor (props) {
         super(props);
         this.actions = new Actions(props.storageType);
@@ -83,3 +83,35 @@ export class MessagesHandler extends React.Component {
         );
     }
 }
+
+MessagesHandler.propTypes = {
+    wrapperClassName: React.PropTypes.string,
+    errorMessageProps: React.PropTypes.shape({
+        wrapperClassName: React.PropTypes.string,
+        textClassName: React.PropTypes.string,
+        closeButtonClassName: React.PropTypes.string,
+        closeButtonContent: React.PropTypes.any
+    }),
+    warningMessageProps: React.PropTypes.shape({
+        wrapperClassName: React.PropTypes.string,
+        textClassName: React.PropTypes.string,
+        closeButtonClassName: React.PropTypes.string,
+        closeButtonContent: React.PropTypes.any
+    }),
+    infoMessageProps: React.PropTypes.shape({
+        wrapperClassName: React.PropTypes.string,
+        textClassName: React.PropTypes.string,
+        closeButtonClassName: React.PropTypes.string,
+        closeButtonContent: React.PropTypes.any
+    }),
+    successMessageProps: React.PropTypes.shape({
+        wrapperClassName: React.PropTypes.string,
+        textClassName: React.PropTypes.string,
+        closeButtonClassName: React.PropTypes.string,
+        closeButtonContent: React.PropTypes.any
+    }),
+    closeTime: React.PropTypes.number,
+    animation: React.PropTypes.string
+};
+
+export {MessagesHandler};

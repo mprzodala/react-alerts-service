@@ -1,6 +1,6 @@
 ##React alerts service (ES6)
 
-<img src="https://img.shields.io/badge/license-MIT-blue.svg"/> <img src="https://img.shields.io/badge/version-v0.6.2-blue.svg"/> <img src="https://img.shields.io/badge/build-passing-brightgreen.svg"/>
+<img src="https://img.shields.io/badge/license-MIT-blue.svg"/> <img src="https://img.shields.io/badge/version-v0.8.0-blue.svg"/> <img src="https://img.shields.io/badge/build-passing-brightgreen.svg"/>
 
 ####Installation
 

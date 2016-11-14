@@ -1,6 +1,6 @@
 import React from 'react';
 
-export class BasicMessage extends React.Component {
+class BasicMessage extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
@@ -60,3 +60,20 @@ export class BasicMessage extends React.Component {
         );
     }
 }
+
+BasicMessage.propTypes = {
+    messageIcon: React.PropTypes.string,
+    closeButtonContent: React.PropTypes.any,
+    wrapperClassName: React.PropTypes.string,
+    textClassName: React.PropTypes.string,
+    closeButtonClassName: React.PropTypes.string,
+    animation: React.PropTypes.string,
+    closeTime: React.PropTypes.number,
+    id: React.PropTypes.string.isRequired,
+    messageContent: React.PropTypes.string.isRequired,
+    type: React.PropTypes.string.isRequired,
+    onClose: React.PropTypes.func.isRequired,
+    repeated: React.PropTypes.number.isRequired
+};
+
+export {BasicMessage};

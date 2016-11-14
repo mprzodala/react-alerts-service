@@ -28,5 +28,36 @@ let sematicClasses = {
     }
 };
 
-export const MessagesHandlerSemantic = (props) => <MessagesHandler {...props} {...sematicClasses}/>;
+const MessagesHandlerSemantic = (props) => <MessagesHandler {...props} {...sematicClasses}/>;
 
+MessagesHandlerSemantic.propTypes = {
+    wrapperClassName: React.PropTypes.string,
+    errorMessageProps: React.PropTypes.shape({
+        wrapperClassName: React.PropTypes.string,
+        textClassName: React.PropTypes.string,
+        closeButtonClassName: React.PropTypes.string,
+        closeButtonContent: React.PropTypes.any
+    }),
+    warningMessageProps: React.PropTypes.shape({
+        wrapperClassName: React.PropTypes.string,
+        textClassName: React.PropTypes.string,
+        closeButtonClassName: React.PropTypes.string,
+        closeButtonContent: React.PropTypes.any
+    }),
+    infoMessageProps: React.PropTypes.shape({
+        wrapperClassName: React.PropTypes.string,
+        textClassName: React.PropTypes.string,
+        closeButtonClassName: React.PropTypes.string,
+        closeButtonContent: React.PropTypes.any
+    }),
+    successMessageProps: React.PropTypes.shape({
+        wrapperClassName: React.PropTypes.string,
+        textClassName: React.PropTypes.string,
+        closeButtonClassName: React.PropTypes.string,
+        closeButtonContent: React.PropTypes.any
+    }),
+    closeTime: React.PropTypes.number,
+    animation: React.PropTypes.string
+};
+
+export {MessagesHandlerSemantic};

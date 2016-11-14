@@ -28,5 +28,36 @@ let bootstrapClasses = {
     }
 };
 
-export const MessagesHandlerBootstrap = (props) => <MessagesHandler {...props} {...bootstrapClasses}/>;
+const MessagesHandlerBootstrap = (props) => <MessagesHandler {...props} {...bootstrapClasses}/>;
 
+MessagesHandlerBootstrap.propTypes = {
+    wrapperClassName: React.PropTypes.string,
+    errorMessageProps: React.PropTypes.shape({
+        wrapperClassName: React.PropTypes.string,
+        textClassName: React.PropTypes.string,
+        closeButtonClassName: React.PropTypes.string,
+        closeButtonContent: React.PropTypes.any
+    }),
+    warningMessageProps: React.PropTypes.shape({
+        wrapperClassName: React.PropTypes.string,
+        textClassName: React.PropTypes.string,
+        closeButtonClassName: React.PropTypes.string,
+        closeButtonContent: React.PropTypes.any
+    }),
+    infoMessageProps: React.PropTypes.shape({
+        wrapperClassName: React.PropTypes.string,
+        textClassName: React.PropTypes.string,
+        closeButtonClassName: React.PropTypes.string,
+        closeButtonContent: React.PropTypes.any
+    }),
+    successMessageProps: React.PropTypes.shape({
+        wrapperClassName: React.PropTypes.string,
+        textClassName: React.PropTypes.string,
+        closeButtonClassName: React.PropTypes.string,
+        closeButtonContent: React.PropTypes.any
+    }),
+    closeTime: React.PropTypes.number,
+    animation: React.PropTypes.string
+};
+
+export {MessagesHandlerBootstrap};
