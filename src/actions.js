@@ -6,7 +6,7 @@ export class Actions {
         if(storageType === 'simpleStorage'){
             this.storage = SimpleStorage;
             this.getAlerts = () => {
-                return this.storage.getItem('react-alerts') || {errorMessages: [], warningMessages: [], infoMessages: [], successMessages: []};
+                return this.storage.getItem('react-alerts') || {messages: []};
             };
             this.setAlerts = (alerts) => {
                 this.storage.setItem('react-alerts', alerts);
@@ -15,7 +15,7 @@ export class Actions {
         if(storageType === 'localStorage'){
             this.storage = localStorage;
             this.getAlerts = () => {
-                return JSON.parse(this.storage.getItem('react-alerts')) || {errorMessages: [], warningMessages: [], infoMessages: [], successMessages: []};
+                return JSON.parse(this.storage.getItem('react-alerts')) || {messages: []};
             };
             this.setAlerts = (alerts) => {
                 this.storage.setItem('react-alerts', JSON.stringify(alerts));
@@ -27,31 +27,32 @@ export class Actions {
     }
     setMessage(messageContent, type, messageIcon){
         const alerts = this.getAlerts();
-        const index = findIndex(alerts[type], m => m.messageContent.indexOf(messageContent) > -1);
+        const index = findIndex(alerts.messages, m => m.messageContent.indexOf(messageContent) > -1);
         if(index > -1){
-            alerts[type][index].repeated ++;
+            alerts.messages[index].repeated ++;
         }else {
-            alerts[type].push({
+            alerts.messages.push({
                 id: this.generateMessageId(),
+                type,
                 messageContent,
                 messageIcon,
                 timeCreated: new Date(),
-                repeated: 0
+                repeated: 1
             });
         }
         this.setAlerts(alerts);
     }
     setErrorMessage(message, icon){
-        this.setMessage(message, 'errorMessages', icon);
+        this.setMessage(message, 'error', icon);
     }
     setWarningMessage(message, icon){
-        this.setMessage(message, 'warningMessages', icon);
+        this.setMessage(message, 'warning', icon);
     }
     setInfoMessage(message, icon){
-        this.setMessage(message, 'infoMessages', icon);
+        this.setMessage(message, 'info', icon);
     }
     setSuccessMessage(message, icon){
-        this.setMessage(message, 'successMessages', icon);
+        this.setMessage(message, 'success', icon);
     }
 }
 

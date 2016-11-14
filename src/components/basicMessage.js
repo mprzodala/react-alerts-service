@@ -12,16 +12,14 @@ export class BasicMessage extends React.Component {
         const {
             closeTime = 5000,
             onClose = () => {},
-            messageType,
             id,
             animation
         } = this.props;
-
         if(animation) {
             this.animationStartTimeoutHandler = setTimeout(() => this.setState({animationClass: this.getAnimationClass('start')}), 100);
             this.animationEndTimeoutHandler = setTimeout(() => this.setState({animationClass: this.getAnimationClass('end')}), closeTime - 500);
         }
-        this.timeoutHandler = setTimeout(() => onClose(messageType, id), closeTime);
+        this.timeoutHandler = setTimeout(() => onClose(id), closeTime);
     }
 
     componentWillUnmount () {
@@ -42,9 +40,9 @@ export class BasicMessage extends React.Component {
         const {
             messageIcon,
             messageContent,
-            messageType,
+            type,
             closeButtonContent = 'X',
-            wrapperClassName = 'system-error-message',
+            wrapperClassName,
             textClassName = 'message-text',
             closeButtonClassName= 'close-button',
             onClose = () => {},
@@ -52,12 +50,12 @@ export class BasicMessage extends React.Component {
             repeated
         } = this.props;
         return (
-            <div className={wrapperClassName + this.state.animationClass}>
+            <div className={(wrapperClassName || 'system-' + type + '-message') + this.state.animationClass}>
                 {messageIcon && <div className="message-icon"><i className={messageIcon} /></div>}
                 <div className={textClassName}>
-                    {repeated > 0 && '(' + repeated + ') '}{messageContent}
+                    {repeated > 1 && '(' + repeated + ') '}{messageContent}
                 </div>
-                <i onClick={() => onClose(messageType, id)} className={closeButtonClassName}>{closeButtonContent}</i>
+                <i onClick={() => onClose(id)} className={closeButtonClassName}>{closeButtonContent}</i>
             </div>
         );
     }
